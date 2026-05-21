@@ -1,0 +1,22 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+      "-I/usr/include/x86_64-linux-gnu/qt6",
+      "-DQT_WIDGETS_LIB",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtCore",
+      "-I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtGui",
+      "-DQT_GUI_LIB",
+      "-DQT_CORE_LIB",
+      "-o",
+      "app",
+      "main.cpp"
+    ],
+    "directory": "/home/imbluedabr/PROG4",
+    "file": "/home/imbluedabr/PROG4/main.cpp",
+    "output": "/home/imbluedabr/PROG4/app"
+  }
+]
