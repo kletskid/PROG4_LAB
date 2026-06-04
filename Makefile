@@ -1,7 +1,17 @@
 
-app:
-	g++ main.cpp -o app $(shell pkg-config --cflags --libs Qt6Widgets)
+SRCS = $(wildcard *.cpp)
+
+HDRS = $(wildcard *.h)
+
+MOCS = $(addprefix moc_,$(HDRS:%.h=%.cpp))
+
+
+moc_%.cpp: %.h
+	/usr/lib/qt6/libexec/moc $< -o $@
+
+app: $(MOCS)
+	g++ $(SRCS) -o app $(shell pkg-config --cflags --libs Qt6Widgets)
 
 clean:
-	rm app
+	rm $(MOCS) app
 
