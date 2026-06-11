@@ -10,9 +10,12 @@ class Keypad : public QWidget
 public:
     explicit Keypad(QWidget* parent = nullptr);
 
+private slots:
+    void onButtonClicked(char digit);
+
 private:
-    int value = 0;
+    int bufferIndex= 0;
     QLabel* label;
-    QPushButton* incButton;
+    char keypadBuffer[4];
 };
 

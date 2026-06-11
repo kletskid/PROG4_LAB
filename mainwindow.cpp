@@ -22,10 +22,10 @@ MainWindow::MainWindow(QWidget* parent)
     auto* layout = new QGridLayout(central);
 
     auto* displaypanel = new DisplayPanel(central);
-    layout->addWidget(displaypanel);
+    layout->addWidget((displaypanel), 0, 0);
 
     auto* keypad = new Keypad(central);
-    layout->addWidget(keypad);
+    layout->addWidget((keypad), 1, 0);
 
     setCentralWidget(central);
     this->adjustSize();

@@ -5,6 +5,7 @@
 DisplayPanel::DisplayPanel(QWidget* parent)
     : QWidget(parent)
 {
+    
     lcd = new QLabel(this);
 
     QFont font("Courier New");

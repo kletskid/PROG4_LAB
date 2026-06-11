@@ -1,0 +1,214 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "console.o",
+      "console.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/console.c",
+    "output": "/home/kletskid/PROG4_LAB/console.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "display.o",
+      "display.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/display.c",
+    "output": "/home/kletskid/PROG4_LAB/display.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "events.o",
+      "events.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/events.c",
+    "output": "/home/kletskid/PROG4_LAB/events.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "idle_mode.o",
+      "idle_mode.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/idle_mode.c",
+    "output": "/home/kletskid/PROG4_LAB/idle_mode.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "keyboard.o",
+      "keyboard.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/keyboard.c",
+    "output": "/home/kletskid/PROG4_LAB/keyboard.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "maintenance_mode.o",
+      "maintenance_mode.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/maintenance_mode.c",
+    "output": "/home/kletskid/PROG4_LAB/maintenance_mode.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "money_manager.o",
+      "money_manager.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/money_manager.c",
+    "output": "/home/kletskid/PROG4_LAB/money_manager.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "production_mode.o",
+      "production_mode.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/production_mode.c",
+    "output": "/home/kletskid/PROG4_LAB/production_mode.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "product_manager.o",
+      "product_manager.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/product_manager.c",
+    "output": "/home/kletskid/PROG4_LAB/product_manager.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "states.o",
+      "states.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/states.c",
+    "output": "/home/kletskid/PROG4_LAB/states.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "fsm_functions/fsm.o",
+      "fsm_functions/fsm.c"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/fsm_functions/fsm.c",
+    "output": "/home/kletskid/PROG4_LAB/fsm_functions/fsm.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+      "-I/usr/include/x86_64-linux-gnu/qt6",
+      "-DQT_WIDGETS_LIB",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtCore",
+      "-I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtGui",
+      "-DQT_GUI_LIB",
+      "-DQT_CORE_LIB",
+      "-c",
+      "-o",
+      "displaypanel.o",
+      "displaypanel.cpp"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/displaypanel.cpp",
+    "output": "/home/kletskid/PROG4_LAB/displaypanel.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+      "-I/usr/include/x86_64-linux-gnu/qt6",
+      "-DQT_WIDGETS_LIB",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtCore",
+      "-I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtGui",
+      "-DQT_GUI_LIB",
+      "-DQT_CORE_LIB",
+      "-c",
+      "-o",
+      "Keypad.o",
+      "Keypad.cpp"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/Keypad.cpp",
+    "output": "/home/kletskid/PROG4_LAB/Keypad.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+      "-I/usr/include/x86_64-linux-gnu/qt6",
+      "-DQT_WIDGETS_LIB",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtCore",
+      "-I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtGui",
+      "-DQT_GUI_LIB",
+      "-DQT_CORE_LIB",
+      "-c",
+      "-o",
+      "main.o",
+      "main.cpp"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/main.cpp",
+    "output": "/home/kletskid/PROG4_LAB/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+      "-I/usr/include/x86_64-linux-gnu/qt6",
+      "-DQT_WIDGETS_LIB",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtCore",
+      "-I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+      "-I/usr/include/x86_64-linux-gnu/qt6/QtGui",
+      "-DQT_GUI_LIB",
+      "-DQT_CORE_LIB",
+      "-c",
+      "-o",
+      "mainwindow.o",
+      "mainwindow.cpp"
+    ],
+    "directory": "/home/kletskid/PROG4_LAB",
+    "file": "/home/kletskid/PROG4_LAB/mainwindow.cpp",
+    "output": "/home/kletskid/PROG4_LAB/mainwindow.o"
+  }
+]
