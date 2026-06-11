@@ -1,12 +1,41 @@
-#include "mainwindow.h"
-#include "counterpanel.h"
+#include "mainwindow.hpp"
+#include "counterpanel.hpp"
+extern "C" {
+    #include "events.h"
+    #include "fsm_functions/fsm.h"
+}
 #include <QWidget>
-#include <QGridLayout>
 #include <QPushButton>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
+   
+
+    //setup ui
+    auto* central = new QWidget(this);
+    auto* layout = new QGridLayout(central);
+
+    auto* counter = new CounterPanel(central);
+    layout->addWidget(counter);
+
+    setCentralWidget(central);
+
+    //setup fsm
+    this->currentState = S_IDLE;
+    FSM_AddEvent(E_INITIALIZE);
     
+    //setup update loop
+    connect(&this->timer, &QTimer::timeout, this, &MainWindow::MainWindowUpdate);
+    this->timer.start(16); //60 fps update loop
+}
+
+void MainWindow::MainWindowUpdate()
+{
+    currentState = FSM_UpdateStateMachine(this->currentState);
+    update();
 }
 
