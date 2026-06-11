@@ -6,13 +6,14 @@ char dsp_buffer[4][21];
 
 void DSPclearDisplay()
 {
-   for (int i = 0; i < 4; i++)
-      memset(dsp_buffer[0], 0, 20);
+   for (int i = 0; i < 4; i++) {
+      memset(dsp_buffer[i], 0, 21);
+   }
 }
 
 void DSPclearLine(int line)
 {
-   memset(dsp_buffer[line], 0, 20);
+   memset(dsp_buffer[line], 0, 21);
 }
 
 

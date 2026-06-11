@@ -1,6 +1,6 @@
 #include "keyboard.h"
 
-int lastPressed;
+int lastPressed = -1;
 
 int KYBgetint(int a)
 {

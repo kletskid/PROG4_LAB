@@ -27,11 +27,13 @@ void production_mode_register()
 
    FSM_AddTransition(&(transition_t){ S_WAIT_FOR_MONEY, E_20C, S_PROCESS_20C});
    FSM_AddTransition(&(transition_t){ S_WAIT_FOR_MONEY, E_50C, S_PROCESS_50C});
+   FSM_AddTransition(&(transition_t){ S_WAIT_FOR_MONEY, E_MONEY_NOT_ACCEPTED, S_WAIT_FOR_MONEY});
    FSM_AddTransition(&(transition_t){ S_PROCESS_50C, E_MONEY_ENOUGH, S_END_INTERACTION});
    FSM_AddTransition(&(transition_t){ S_PROCESS_50C, E_MONEY_NOT_ENOUGH, S_WAIT_FOR_MONEY});
    FSM_AddTransition(&(transition_t){ S_PROCESS_20C, E_MONEY_ENOUGH, S_END_INTERACTION});
    FSM_AddTransition(&(transition_t){ S_PROCESS_20C, E_MONEY_NOT_ENOUGH, S_WAIT_FOR_MONEY});
    FSM_AddTransition(&(transition_t){ S_END_INTERACTION, E_INTERACTION_ENDED, S_IDLE});
+   FSM_AddTransition(&(transition_t){ S_END_INTERACTION, E_MONEY_ENOUGH, S_END_INTERACTION});
 }
 
 
@@ -103,26 +105,29 @@ static struct timespec lastTime;
 void end_interaction_entry()
 {
    DCSdebugSystemInfo("finalising interaction\n");
-   DSPclearDisplay();
-   DSPshow(3, "Payment accepted");
 
    struct timespec current;
    clock_gettime(CLOCK_MONOTONIC, &current);
-   if (lastTime.tv_sec == 0) lastTime = current;
+   if (lastTime.tv_sec == 0) {
+      //DSPclearDisplay();
+      product_manager_dispence_product();
+      money_manager_finalize_transaction();
 
-   if (current.tv_sec - lastTime.tv_sec < 4) return;
-   lastTime.tv_sec = 0;
+      lastTime = current;
+   }
 
-   product_manager_dispence_product();
-   money_manager_finalize_transaction();
-   FSM_AddEvent(E_INTERACTION_ENDED);
+   if ((current.tv_sec - lastTime.tv_sec) > 3) {
+      lastTime.tv_sec = 0;
+      
+      FSM_AddEvent(E_INTERACTION_ENDED);
+   } else {
+      FSM_AddEvent(E_MONEY_ENOUGH);
+   }
 }
 
 void end_interaction_exit()
 {
 
 }
-
-
 
 
