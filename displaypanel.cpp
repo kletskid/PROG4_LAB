@@ -30,10 +30,10 @@ DisplayPanel::DisplayPanel(QWidget* parent)
     );
 
     QFontMetrics fm(font);
-    int width  = fm.horizontalAdvance('M') * 20;
-    int height = fm.height() * 4;
+    int width  = fm.horizontalAdvance('M') * 20 + 8;
+    int height = fm.height() * 4 + 8;
 
-    lcd->setMinimumSize(width, height);
+    lcd->setMaximumSize(width, height);
     lcd->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); 
 
     lcd->setText(
@@ -46,7 +46,7 @@ DisplayPanel::DisplayPanel(QWidget* parent)
 
 void DisplayPanel::updateDisplay()
 {
-    char buffer[21*4];
+    char buffer[21*4] = {0};
     snprintf(buffer, 21*4, "%s\n%s\n%s\n%s", dsp_buffer[0], dsp_buffer[1], dsp_buffer[2], dsp_buffer[3]);
     lcd->setText(buffer);
 }

@@ -52,6 +52,9 @@ void idle_entry()
       DSPclearDisplay();
       DSPshow(3, "Enter product code");
       int product_code = KYBgetint(0);
+      if (product_code != -1) {
+         printf("c: %d\n", product_code);
+      }
       event_t mode_event = product_manager_set_product((enum product_code_e) product_code);
       FSM_AddEvent(mode_event);
    }

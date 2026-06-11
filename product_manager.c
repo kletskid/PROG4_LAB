@@ -67,16 +67,13 @@ void product_manager_restock(enum product_code_e product, uint32_t amount) {
 
 void product_manager_dispence_product() {
    if (product_list[current_product].count <= 0) {
-      DSPshow(2, "Product %s is sold out\n", product_list[current_product].name);
-      DSPshow(3, "Return money: %d cents\n", money_manager_get_count());
-      return;
-   }
-
-   else {
+      DSPshow(2, "%s sold out", product_list[current_product].name);
+      DSPshow(3, "Returned: %d c", money_manager_get_count());
+   } else {
       product_list[current_product].count--; 
       int change = money_manager_get_count() - product_manager_get_current_price();
-      DSPshow(2, "Product %s dispenced\n", product_list[current_product].name);
-      DSPshow(3, "Change returned: %d cents\n", change);
+      DSPshow(2, "Disp. %s", product_list[current_product].name);
+      DSPshow(3, "ret: %d c", change);
    }
 }
 
