@@ -1,10 +1,11 @@
 #include "mainwindow.hpp"
-#include "counterpanel.hpp"
+#include "Keypad.hpp"
 extern "C" {
     #include "events.h"
     #include "fsm_functions/fsm.h"
 }
 #include <QWidget>
+#include <QPushButton>
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QTimer>
@@ -12,15 +13,18 @@ extern "C" {
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
+   
+
     //setup ui
     auto* central = new QWidget(this);
     auto* layout = new QGridLayout(central);
 
-    auto* counter = new CounterPanel(central);
-    layout->addWidget(counter);
+    auto* keypad = new Keypad(central);
+    layout->addWidget(keypad);
 
     setCentralWidget(central);
-
+    this->adjustSize();
+    
     //setup fsm
     this->currentState = S_IDLE;
     FSM_AddEvent(E_INITIALIZE);
