@@ -1,5 +1,7 @@
 #include "mainwindow.hpp"
 #include "Keypad.hpp"
+#include "displaypanel.hpp"
+
 extern "C" {
     #include "events.h"
     #include "fsm_functions/fsm.h"
@@ -18,6 +20,9 @@ MainWindow::MainWindow(QWidget* parent)
     //setup ui
     auto* central = new QWidget(this);
     auto* layout = new QGridLayout(central);
+
+    auto* displaypanel = new DisplayPanel(central);
+    layout->addWidget(Keypad);
 
     auto* keypad = new Keypad(central);
     layout->addWidget(keypad);
