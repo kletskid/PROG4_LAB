@@ -1,5 +1,5 @@
 #include "mainwindow.hpp"
-#include "counterpanel.hpp"
+#include "Keypad.hpp"
 extern "C" {
     #include "events.h"
     #include "fsm_functions/fsm.h"
@@ -19,8 +19,8 @@ MainWindow::MainWindow(QWidget* parent)
     auto* central = new QWidget(this);
     auto* layout = new QGridLayout(central);
 
-    auto* counter = new CounterPanel(central);
-    layout->addWidget(counter);
+    auto* keypad = new Keypad(central);
+    layout->addWidget(keypad);
 
     setCentralWidget(central);
 

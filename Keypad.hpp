@@ -4,11 +4,11 @@
 class QLabel;
 class QPushButton;
 
-class CounterPanel : public QWidget
+class Keypad : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CounterPanel(QWidget* parent = nullptr);
+    explicit Keypad(QWidget* parent = nullptr);
 
 private:
     int value = 0;
