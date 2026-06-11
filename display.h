@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-extern char dsp_buffer[4][20];
+extern char dsp_buffer[4][21];
 
 void DSPclearDisplay();
 void DSPclearLine(int line);

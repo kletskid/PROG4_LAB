@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-char dsp_buffer[4][20];
+char dsp_buffer[4][21];
 
 void DSPclearDisplay()
 {

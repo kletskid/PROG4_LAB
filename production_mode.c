@@ -1,5 +1,6 @@
 
 #include <unistd.h>
+#include <time.h>
 
 /// Finite State Machine Library
 #include "fsm_functions/fsm.h"
@@ -97,12 +98,21 @@ void process_20c_exit()
 
 }
 
+static struct timespec lastTime;
 
 void end_interaction_entry()
 {
    DCSdebugSystemInfo("finalising interaction\n");
    DSPclearDisplay();
    DSPshow(3, "Payment accepted");
+
+   struct timespec current;
+   clock_gettime(CLOCK_MONOTONIC, &current);
+   if (lastTime.tv_sec == 0) lastTime = current;
+
+   if (current.tv_sec - lastTime.tv_sec < 4) return;
+   lastTime.tv_sec = 0;
+
    product_manager_dispence_product();
    money_manager_finalize_transaction();
    FSM_AddEvent(E_INTERACTION_ENDED);

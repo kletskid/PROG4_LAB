@@ -2,13 +2,17 @@
 #include <QLabel>
 #include <QFont>
 
+extern "C" {
+#include "display.h"
+}
+
 DisplayPanel::DisplayPanel(QWidget* parent)
     : QWidget(parent)
 {
     lcd = new QLabel(this);
-
-    QFont font("Courier New");
-    font.setStyleHint(QFont::Monospace);
+    
+    QFont font("Monospace");
+    font.setStyleHint(QFont::TypeWriter);
     font.setPointSize(12);
 
     lcd->setFont(font);
@@ -22,17 +26,18 @@ DisplayPanel::DisplayPanel(QWidget* parent)
         "}"
     );
 
-    QFontMetrics fm(font);
-    int width  = fm.horizontalAdvance('M') * 20;
-    int height = fm.height() * 4;
-
-    lcd->setFixedSize(width, height); 
-
     lcd->setText(
         "ABCDEFGHIJKLMNOPQRST\n"
         "ABCDEFGHIJKLMNOPQRST\n"
         "ABCDEFGHIJKLMNOPQRST\n"
         "ABCDEFGHIJKLMNOPQRST"
     );
+}
+
+void DisplayPanel::updateDisplay()
+{
+    char buffer[21*4];
+    snprintf(buffer, 21*4, "%s\n%s\n%s\n%s", dsp_buffer[0], dsp_buffer[1], dsp_buffer[2], dsp_buffer[3]);
+    lcd->setText(buffer);
 }
 

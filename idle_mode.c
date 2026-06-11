@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <time.h>
 
 #include "idle_mode.h"
 #include "fsm_functions/fsm.h"
@@ -19,24 +20,41 @@ void idle_mode_register()
    FSM_AddTransition(&(transition_t){ S_IDLE, E_INITIALIZE, S_IDLE});
    FSM_AddTransition(&(transition_t){ S_IDLE, E_SELECT_PRODUCT, S_WAIT_FOR_MONEY});
    FSM_AddTransition(&(transition_t){ S_IDLE, E_MAINTENANCE, S_OUT_OF_ORDER});
+   FSM_AddTransition(&(transition_t){ S_IDLE, E_READY, S_IDLE});
+   FSM_AddTransition(&(transition_t){ S_IDLE, E_PRODUCT_INVALID, S_IDLE});
+
 }
 
+static struct timespec lastTime;
 void idle_entry()
 {
-   if (event == E_INITIALIZE) {
-      money_manager_init();
-      product_manager_init(); 
+   if (event == E_INITIALIZE) {     
+      struct timespec current;
+      clock_gettime(CLOCK_MONOTONIC, &current);
+      if (lastTime.tv_sec == 0) {
+         money_manager_init();
+         product_manager_init(); 
 
+         DSPclearDisplay();
+         DSPshow(3, "Init system...");
+         lastTime = current;
+      }
+
+      if ((current.tv_sec - lastTime.tv_sec) > 3) {
+         lastTime.tv_sec = 0; 
+         FSM_AddEvent(E_READY);
+      } else {
+         FSM_AddEvent(E_INITIALIZE);
+      }
+
+   } else {
+      DCSdebugSystemInfo("in state idle\n");
       DSPclearDisplay();
-      DSPshow(3, "Initialising system...");
+      DSPshow(3, "Enter product code");
+      int product_code = KYBgetint(0);
+      event_t mode_event = product_manager_set_product((enum product_code_e) product_code);
+      FSM_AddEvent(mode_event);
    }
-   DCSdebugSystemInfo("in state idle\n");
-   DSPclearDisplay();
-   DSPshow(3, "Enter product code");
-   int product_code = KYBgetint(0);
-
-   event_t mode_event = product_manager_set_product((enum product_code_e) product_code);
-   FSM_AddEvent(mode_event);
 }
 
 void idle_exit()

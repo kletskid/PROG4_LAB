@@ -1,6 +1,9 @@
 #pragma once
 #include <QMainWindow>
 #include <QTimer>
+#include "Keypad.hpp"
+#include "displaypanel.hpp"
+
 extern "C" {
 #include "states.h"
 }
@@ -17,5 +20,7 @@ private slots:
 private:
     QTimer timer;
     state_t currentState;
+    DisplayPanel* dsp;
+    Keypad* kyb;
 };
 

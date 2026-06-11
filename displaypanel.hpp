@@ -9,6 +9,8 @@ class DisplayPanel : public QWidget
 public:
     explicit DisplayPanel(QWidget* parent = nullptr);
 
+    void updateDisplay();
+
 private:
     QLabel* lcd;
 };
