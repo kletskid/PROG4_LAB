@@ -11,13 +11,16 @@ Keypad::Keypad(QWidget* parent)
     auto* layout = new QGridLayout(this);
     auto makeButton = [&](const QString& text, int row, int col, char digit){
         auto* btn = new QPushButton(text, this);
-        btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        btn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         btn->setStyleSheet("QPushButton { padding: 20px 20px; }");
         layout->addWidget(btn, row, col);
         connect(btn, &QPushButton::clicked, this, [this, digit](){
             onButtonClicked(digit);
         });
     };
+    layout->setColumnMinimumWidth(0, 80);
+    layout->setColumnMinimumWidth(1, 80);
+    layout->setColumnMinimumWidth(2, 80);
     makeButton("1", 0, 0, '1');
     makeButton("2", 0, 1, '2');
     makeButton("3", 0, 2, '3');
@@ -30,7 +33,7 @@ Keypad::Keypad(QWidget* parent)
     makeButton("0", 3, 1, '0');
 
     auto* delBtn = new QPushButton("delete", this);
-    delBtn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    delBtn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     delBtn->setStyleSheet("QPushButton { padding: 20px 20px; }");
     layout->addWidget(delBtn, 3, 0);
     connect(delBtn, &QPushButton::clicked, this, [this](){
@@ -41,7 +44,7 @@ Keypad::Keypad(QWidget* parent)
     });
     
     auto* entBtn = new QPushButton("enter", this);
-    entBtn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    entBtn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     entBtn->setStyleSheet("QPushButton { padding: 20px 20px; }");
     layout->addWidget(entBtn, 3, 2);
     connect(entBtn, &QPushButton::clicked, this, [this](){
@@ -50,16 +53,7 @@ Keypad::Keypad(QWidget* parent)
         bufferIndex = 0;
     });
 
-    layout->setColumnStretch(0, 1);
-    layout->setColumnStretch(1, 1);
-    layout->setColumnStretch(2, 1);
-    layout->setRowStretch(0, 1);
-    layout->setRowStretch(1, 1);
-    layout->setRowStretch(2, 1);
-    layout->setRowStretch(3, 1);
-    layout->setColumnMinimumWidth(0, 80);
-    layout->setColumnMinimumWidth(1, 80);
-    layout->setColumnMinimumWidth(2, 80);
+
     setLayout(layout);
 }
 

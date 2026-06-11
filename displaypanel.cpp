@@ -34,7 +34,7 @@ DisplayPanel::DisplayPanel(QWidget* parent)
     int height = fm.height() * 4;
 
     lcd->setMinimumSize(width, height);
-    lcd->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); 
+    lcd->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     lcd->setText(
         "ABCDEFGHIJKLMNOPQRST\n"

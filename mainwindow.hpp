@@ -21,6 +21,7 @@ private:
     QTimer timer;
     state_t currentState;
     DisplayPanel* dsp;
+    QLabel* extraDisplay;
     Keypad* kyb;
 };
 
