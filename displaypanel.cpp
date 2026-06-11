@@ -1,12 +1,14 @@
 #include "displaypanel.hpp"
 #include <QLabel>
 #include <QFont>
+#include <QVBoxLayout>
 
 DisplayPanel::DisplayPanel(QWidget* parent)
     : QWidget(parent)
 {
-    
+    auto* displayLayout = new QVBoxLayout(this);
     lcd = new QLabel(this);
+    displayLayout->addWidget(lcd);
 
     QFont font("Courier New");
     font.setStyleHint(QFont::Monospace);
@@ -27,7 +29,8 @@ DisplayPanel::DisplayPanel(QWidget* parent)
     int width  = fm.horizontalAdvance('M') * 20;
     int height = fm.height() * 4;
 
-    lcd->setFixedSize(width, height); 
+    lcd->setMinimumSize(width, height);
+    lcd->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); 
 
     lcd->setText(
         "ABCDEFGHIJKLMNOPQRST\n"

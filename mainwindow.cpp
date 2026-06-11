@@ -20,6 +20,9 @@ MainWindow::MainWindow(QWidget* parent)
     //setup ui
     auto* central = new QWidget(this);
     auto* layout = new QGridLayout(central);
+    layout->setColumnStretch(0, 1);
+    layout->setRowStretch(0, 1);
+    layout->setRowStretch(1, 1);
 
     auto* displaypanel = new DisplayPanel(central);
     layout->addWidget((displaypanel), 0, 0);

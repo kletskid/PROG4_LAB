@@ -46,6 +46,8 @@ Keypad::Keypad(QWidget* parent)
     layout->addWidget(entBtn, 3, 2);
     connect(entBtn, &QPushButton::clicked, this, [this](){
         lastPressed = std::atoi(keypadBuffer);
+        memset(keypadBuffer, 0, 4);
+        bufferIndex = 0;
     });
 
     layout->setColumnStretch(0, 1);
