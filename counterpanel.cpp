@@ -1,4 +1,4 @@
-#include "counterpanel.h"
+#include "counterpanel.hpp"
 #include <QLabel>
 #include <QPushButton>
 #include <QVBoxLayout>
