@@ -6,8 +6,7 @@
 Keypad::Keypad(QWidget* parent)
     : QWidget(parent)
 {
-    auto* central = new QWidget(this);
-    auto* layout = new QGridLayout(central);
+    auto* layout = new QGridLayout(this);
 
     layout->addWidget(new QPushButton("1"), 0, 0);
     layout->addWidget(new QPushButton("2"), 0, 1);

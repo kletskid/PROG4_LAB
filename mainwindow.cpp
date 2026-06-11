@@ -23,7 +23,8 @@ MainWindow::MainWindow(QWidget* parent)
     layout->addWidget(keypad);
 
     setCentralWidget(central);
-
+    this->adjustSize();
+    
     //setup fsm
     this->currentState = S_IDLE;
     FSM_AddEvent(E_INITIALIZE);
