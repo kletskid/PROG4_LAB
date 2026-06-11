@@ -33,8 +33,11 @@ DisplayPanel::DisplayPanel(QWidget* parent)
     int width  = fm.horizontalAdvance('M') * 20 + 8;
     int height = fm.height() * 4 + 8;
 
-    lcd->setMaximumSize(width, height);
-    lcd->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); 
+
+    lcd->setMinimumSize(width, height);
+    lcd->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+
+
 
     lcd->setText(
         "ABCDEFGHIJKLMNOPQRST\n"
