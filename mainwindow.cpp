@@ -19,11 +19,11 @@ MainWindow::MainWindow(QWidget* parent)
     auto* layout = new QGridLayout(central);
 
     this->dsp = new DisplayPanel(central);
-    layout->addWidget(this->dsp);
+    layout->addWidget(this->dsp, 0, 0);
 
     this->kyb = new Keypad(central);
-    layout->addWidget(this->kyb);
-
+    layout->addWidget(this->kyb, 1, 0);
+    
     setCentralWidget(central);
     this->adjustSize();
     
