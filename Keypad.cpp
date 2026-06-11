@@ -2,6 +2,8 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGridLayout>
+#include "keyboard.h"
+#include <cstdlib>
 
 Keypad::Keypad(QWidget* parent)
     : QWidget(parent)
@@ -43,7 +45,7 @@ Keypad::Keypad(QWidget* parent)
     entBtn->setStyleSheet("QPushButton { padding: 20px 20px; }");
     layout->addWidget(entBtn, 3, 2);
     connect(entBtn, &QPushButton::clicked, this, [this](){
-        //TODO: add input processing
+        lastPressed = std::atoi(keypadBuffer);
     });
 
     layout->setColumnStretch(0, 1);
