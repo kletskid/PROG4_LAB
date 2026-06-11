@@ -1,6 +1,7 @@
 
 #include <unistd.h>
 #include <time.h>
+#include "coin_value.h"
 
 /// Finite State Machine Library
 #include "fsm_functions/fsm.h"
@@ -39,8 +40,8 @@ void production_mode_register()
 
 event_t get_coin() {
    
-   int coin = KYBgetint(0);
-   
+   int coin = coin_value;
+   coin_value = -1; // Reset coin_value after reading
    switch (coin) {
       case 50:
          return E_50C; 

@@ -2,6 +2,7 @@
 extern "C" {
     #include "events.h"
     #include "fsm_functions/fsm.h"
+    #include "coin_value.h"
 }
 #include <QWidget>
 #include <QPushButton>
@@ -10,6 +11,7 @@ extern "C" {
 #include <QTimer>
 #include <QLabel>
 
+int coin_value = -1; // Initialize coin_value to 0
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
@@ -36,7 +38,18 @@ auto* extraLayout = new QVBoxLayout(extraContainer);
 
 extraLayout->addWidget(extraDisplay);
 
-extraDisplay->setText("Extra Display text here");
+extraDisplay->setText(R"(list of possible inputs:
+
+product selection:
+0: select cola classic 125c
+1: select cola zero 160c
+2: select diet coke 200c
+
+maintenance mode:
+6767: enter maintenance mode
+
+money inserted while no product is selected will be returned immediately
+)");
 QFont font("Monospace");
 font.setStyleHint(QFont::TypeWriter);
 font.setPointSize(10);
@@ -51,7 +64,7 @@ extraDisplay->setStyleSheet(
     "}"
 );
 extraContainer->setVisible(false);
-layout->addWidget(extraContainer, 0, 1, 3, 1);
+layout->addWidget(extraContainer, 0, 1, 4, 1);
 
 setCentralWidget(central);
 
@@ -68,7 +81,33 @@ connect(toggleBtn, &QPushButton::clicked, this, [this, extraContainer](){
     centralWidget()->adjustSize();
     adjustSize();
 });
-
+auto* moneyContainer = new QWidget(central);
+auto* moneyLayout = new QGridLayout(moneyContainer);
+auto* coin20 = new QPushButton("Insert 20c", central);
+auto* coin50 = new QPushButton("Insert 50c", central);
+coin20->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+coin50->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+coin20->setStyleSheet("QPushButton { padding: 20px 20px; }");
+coin50->setStyleSheet("QPushButton { padding: 20px 20px; }");
+moneyLayout->addWidget(coin20, 0, 0);
+moneyLayout->addWidget(coin50, 0, 1);
+layout->addWidget(moneyContainer, 3, 0); // row 3, column 0 only
+connect(coin20, &QPushButton::clicked, this, [this](){
+    if (currentState == S_WAIT_FOR_MONEY) {
+        coin_value = 20;
+    }
+    else {
+        coin_value = -1; // Invalid state for inserting coins
+    }
+});
+connect(coin50, &QPushButton::clicked, this, [this](){
+    if (currentState == S_WAIT_FOR_MONEY) {
+        coin_value = 50;
+    }
+    else {
+        coin_value = -1; // Invalid state for inserting coins
+    }
+});
 //adjust ui size
 this->adjustSize();
     //setup fsm
