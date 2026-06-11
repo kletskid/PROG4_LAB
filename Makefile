@@ -25,5 +25,7 @@ moc_%.cpp: %.hpp
 app: $(OBJS)
 	g++ $(CFLAGS) $(OBJS) -o $@ $(QTLIBS)
 
+all: app
+
 clean:
 	rm -f $(OBJS) $(MOCS) app
